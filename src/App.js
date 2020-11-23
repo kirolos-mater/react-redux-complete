@@ -3,6 +3,7 @@ import Ninjas from './Ninjas';
 import AddNinja from './AddNinja';
 
 class App extends Component {
+
   state = {
     ninjas : [
       { name: 'Ryu', age: 30,  belt: 'black', id: 1 },
@@ -10,6 +11,7 @@ class App extends Component {
       { name: 'Crystal', age: 25,  belt: 'pink', id: 3 },
     ]
   }
+
   addNinja = (ninja) => {
     ninja.id = Math.random();
     let ninjas = [...this.state.ninjas, ninja] // copy of the state arrray and addition of the new element
@@ -17,15 +19,21 @@ class App extends Component {
       ninjas: ninjas,
     })
   }
+
+  deleteNinja = (id) => {
+
+  }
+
   render() {
     return (
       <div className="App">
         <h1>My first React app!</h1>
         <p>Welcome :)</p>
-        <Ninjas ninjas={this.state.ninjas}  />
+        <Ninjas deleteNinja={this.deleteNinja} ninjas={this.state.ninjas}  />
         <AddNinja addNinja={this.addNinja}/>
       </div>
     );
   }
+
 }
 export default App;
